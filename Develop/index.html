@@ -42,10 +42,12 @@
     }
     function hourCompare(schedHour) {
       const nowHour = moment().hour();
-      if (hoursDict.schedHour < nowHour || nowHour >= 19) {
+      console.log(nowHour)
+      console.log(hoursDict[schedHour]);
+      if (hoursDict[schedHour] < nowHour || nowHour >= 19) {
         return 2;
       }
-      else if (hoursDict.schedHour === nowHour) {
+      else if (hoursDict[schedHour] == nowHour) {
         return 1;
       }
       else {
