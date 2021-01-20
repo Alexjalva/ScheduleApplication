@@ -44,8 +44,7 @@
     }
     // function that compares the hour of day vs the hour of the timeblock being generated. Returns 2 if the block is past, 1 if current, 0 if future
     function hourCompare(schedHour) {
-      // const nowHour = moment().hour();
-      const nowHour = 11;
+      const nowHour = moment().hour();
       if (hoursDict[schedHour] < nowHour || nowHour >= 19) {
         return 2;
       }
@@ -96,7 +95,7 @@
         timeRow.addClass("row");
         saveBtn.addClass("saveBtn");
         saveBtn.addClass("col-lg-1");
-        saveIcon.attr("src", "../Assets/saveIcon.png");
+        saveIcon.attr("src", "/Assets/saveIcon.png");
 
         saveBtn.append(saveIcon);
         timeHour.text(businessHours[i]);
