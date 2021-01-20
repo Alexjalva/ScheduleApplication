@@ -24,7 +24,7 @@ Empty View - Users will initially see an empty schedule with no events inputted.
 ![Event Input](Assets/SavedEvent.png)
 Event Entry - Users can enter text into the center time blocks. Upon hitting the save button, the text will be saved.  
 
-![Multiple Events Viewing and Setting](Assets/LengthError.png)
+![Multiple Events Viewing and Setting](Assets/SavedEvents.png)
 Multiple Events Viewing and Setting - Users can view events that they have already set and can update them by typing over them and saving that block. 
 
 
