@@ -25,7 +25,9 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <!-- Javascript script that runs all of the website functionality -->
   <script type="text/javascript">
+    // variables that hold the hour of the day and a numeric equivalent for comparisons sake
     const businessHours = ["8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM"]
     const hoursDict = {
       "8 AM": 8,
@@ -40,10 +42,10 @@
       "5 PM": 17,
       "6 PM": 18
     }
+    // function that compares the hour of day vs the hour of the timeblock being generated. Returns 2 if the block is past, 1 if current, 0 if future
     function hourCompare(schedHour) {
-      const nowHour = moment().hour();
-      console.log(nowHour)
-      console.log(hoursDict[schedHour]);
+      // const nowHour = moment().hour();
+      const nowHour = 11;
       if (hoursDict[schedHour] < nowHour || nowHour >= 19) {
         return 2;
       }
@@ -54,10 +56,9 @@
         return 0
       }
     }
+    // function that pulls text from local storage. Used to fill boxes during dynamic generation. 
     function storedText(schedHour){
       const savedText = localStorage.getItem(schedHour);
-      console.log(schedHour);
-      console.log(savedText);
       if(savedText === null){
         return "";
       }
@@ -66,7 +67,9 @@
       }
     }
     $(document).ready(function () {
+      // set the date at the top, week day, month, day , year format 
       $("#currentDay").text(moment().format("[Today is] dddd, MMMM Do YYYY"))
+      //for loop to create all the time blocks. uses bootstrap and above functions to fill in text as needed. 
       for (let i = 0; i < businessHours.length; i++) {
         let timeRow = $("<div>");
         let timeHour = $("<div>");
@@ -102,6 +105,7 @@
         timeRow.append(saveBtn);
         $(".container").append(timeRow);
       }
+      //click event for saving text in a timeblock. Sets local storage based on time string.
       $(".saveBtn").on("click", function(){
         const timeBox = $(this).siblings("div");
         const centerBox = $(this).siblings("textarea");
